@@ -33,3 +33,31 @@ _In package.json_
 
 4. Create .gitignore file
    _We don't want to include dependencies, Heroku will do that for us_
+
+## Using the heroku cli
+
+1. Login to heroku
+
+```
+$ heroku login
+```
+
+2. Initialize
+
+```
+$ heroku create
+```
+
+3. Set git repository to second address given
+
+```
+$ git remote add heroku **LINK**
+```
+
+4. Push to heroku
+
+```
+$ git push heroku main
+```
+
+_If you receive any errors run the command "heroku logs" to see what went wrong_
