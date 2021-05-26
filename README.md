@@ -1,63 +1,23 @@
-## Deploying to heroku
+## reView
 
-1. Dynamic port binding
-   _Heroku tells us which port our app will use, so we need to make sure we listen to the port they tell us to_
+---
 
-```javascript
-const PORT = process.env.PORT || 5000;
-app.listen(PORT);
-```
+A review server using Node, Express, Passport and Heroku for server deployment. It is used to create users from a google oauth authorization and allow the user to send out business related surveys to their customers through email, store and analyze the results, and allow the user to track them over time or respond as needed.
 
-2. Specify Node Environment
-   _We want to use a specific version of node, so we need to tell heroku which version we want_
+### Development:
 
-```json
-"engines": {
-    "node": "8.1.1",
-    "npm": "5.0.3"
-},
-```
+---
 
-_In package.json_
-
-3. Specify start script
-   _Instruct Heroku what command to run to start our server running_
-
-```json
-"scripts": {
-    "start": "node index.js"
-  },
-```
-
-_In package.json_
-
-4. Create .gitignore file
-   _We don't want to include dependencies, Heroku will do that for us_
-
-## Using the heroku cli
-
-1. Login to heroku
+1. To start the server a single time.
 
 ```
-$ heroku login
+$ npm start
 ```
 
-2. Initialize
+2. For development and auto refreshing the node on changes:
 
 ```
-$ heroku create
+$ npm run dev
 ```
 
-3. Set git repository to second address given
-
-```
-$ git remote add heroku **LINK**
-```
-
-4. Push to heroku
-
-```
-$ git push heroku main
-```
-
-_If you receive any errors run the command "heroku logs" to see what went wrong_
+_This is possible through nodemon under the package.json script configuration_
