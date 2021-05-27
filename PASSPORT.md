@@ -23,6 +23,8 @@ Dashboard > Create Project > Enter Project Name > Create
 OAuth consent screen > External > Create > App name and required fields
 ```
 
+_Be sure to setup the google+ api_
+
 5. Traverse the following links after Consent is set up:
 
 ```
@@ -112,3 +114,43 @@ passport.use(
 ```
 
 _Done takes two argument, done(error, object)_
+
+9. Set users using the serializeUser and deserializeUser functions:
+
+```javascript
+passport.serializeUser((user, done) => {
+    done(null, user.id);
+});
+
+passport.deserializeUser((id, done) => {
+    User.findById(id).then((user) => {
+        done(null, user);
+    });
+});
+```
+
+10. Install the dependency to make use of cookies in express:
+
+```
+$ npm install --save cookie-session
+```
+
+11. Require in passport and cookie-session in index.js file:
+
+```javascript
+const cookieSession = require("cookie-session");
+const passport = require("passport");
+```
+
+12. Instruct passport to make use of cookies to control authentication:
+
+```javascript
+app.use(
+    cookieSession({
+        maxAge: 30 * 24 * 60 * 60 * 1000,
+        keys: [process.env.COOKIE_KEY],
+    })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+```

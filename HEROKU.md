@@ -61,3 +61,5 @@ $ git push heroku main
 ```
 
 _If you receive any errors run the command "heroku logs" to see what went wrong_
+
+5. Be sure to use seperate keys for development and Production.
