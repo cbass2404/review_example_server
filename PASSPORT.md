@@ -81,3 +81,34 @@ module.exports = (app) => {
 ```
 
 _Do not forget to export the routes to your index.js_
+
+8. When using passport you have to tell it to be done and pass in the argument of the object created:
+
+```javascript
+passport.use(
+    new GoogleStrategy(
+        {
+            clientID: process.env.CLIENT_ID,
+            clientSecret: process.env.CLIENT_SECRET,
+            callbackURL: "/auth/google/callback",
+        },
+        (accessToken, refreshToken, profile, done) => {
+            User.findOne({ googleId: profile.id })
+                .then((existingUser) => {
+                    if (existingUser) {
+                        done(null, existingUser);
+                    } else {
+                        new User({ googleId: profile.id })
+                            .save()
+                            .then((user) => done(null, user));
+                    }
+                })
+                .catch((err) => {
+                    console.error("User Authentication", err);
+                });
+        }
+    )
+);
+```
+
+_Done takes two argument, done(error, object)_
