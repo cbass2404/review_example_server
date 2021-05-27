@@ -1,5 +1,4 @@
-config/dev.js
-config/prod.js
+dev.js
 node_modules
 .expo
 .expo-shared

@@ -34,6 +34,9 @@ _In package.json_
 4. Create .gitignore file
    _We don't want to include dependencies, Heroku will do that for us_
 
+5. Create keys in Heroku by the following instructions:
+   settings > config variables
+
 ## Using the heroku cli
 
 1. Login to heroku
