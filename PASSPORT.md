@@ -55,6 +55,7 @@ passport.use(
             clientID: process.env.CLIENT_ID,
             clientSecret: process.env.CLIENT_SECRET,
             callbackURL: "/auth/google/callback",
+            proxy: true,
         },
         (accessToken, refreshToken, profile, done) => {
             console.log("access token", accessToken);
@@ -64,6 +65,8 @@ passport.use(
     )
 );
 ```
+
+_proxy: true is only needed if you are being redirected through a proxy to say that it is safe, like heroku does through aws_
 
 7. Setup Routes:
 
