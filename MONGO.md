@@ -34,3 +34,15 @@ mongoose.model("users", userSchema);
 ```
 
 _Destructure out Schema, and be sure to export the model to mongoose as shown in the bottom. The first argument for the export is the collection name, second argument is the matching schema_
+
+4. To redirect in routes use the res.redirect function:
+
+```javascript
+app.get(
+    "/auth/google/callback",
+    passport.authenticate("google"),
+    (req, res) => {
+        res.redirect("/surveys");
+    }
+);
+```
