@@ -83,3 +83,11 @@ _If no new deploys use the following:_
 $ git commit --allow-empty -m "Purge cache"
 $ git push heroku master
 ```
+
+7. To make heroku install monolithic style client dependencies add this to package.json scripts section:
+
+```json
+"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+```
+
+_https://devcenter.heroku.com/articles/nodejs-support#customizing-the-build-process_
