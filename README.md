@@ -2,7 +2,9 @@
 
 ---
 
-A review server using Node, Express, Passport and Heroku for server deployment. It is used to create users from a google oauth authorization and allow the user to send out business related surveys to their customers through email, store and analyze the results, and allow the user to track them over time or respond as needed.
+_https://express-review-server.herokuapp.com/surveys_
+
+A review server using Node, Express, Passport and Heroku for server deployment in a monolithic style. It is used to create users from a google oauth authorization and allow the user to send out business related surveys to their customers through email, store and analyze the results, and allow the user to track them over time or respond as needed.
 
 ### Development:
 

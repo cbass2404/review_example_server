@@ -69,3 +69,17 @@ $ git push heroku main
 _If you receive any errors run the command "heroku logs" to see what went wrong_
 
 5. Be sure to use seperate keys for development and Production.
+
+6. Clear heroku cache by the following:
+
+```
+$ heroku plugins:install heroku-builds
+$ heroku builds:cache:purge -a appname
+```
+
+_If no new deploys use the following:_
+
+```
+$ git commit --allow-empty -m "Purge cache"
+$ git push heroku master
+```
