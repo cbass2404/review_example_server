@@ -8,6 +8,8 @@ A review server using Node, Express, Passport and Heroku for server deployment. 
 
 ---
 
+_For client side repository go to: https://github.com/cbass2404/review_server_client_
+
 1. To start the server a single time.
 
 ```
