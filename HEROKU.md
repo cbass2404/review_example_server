@@ -37,6 +37,9 @@ _In package.json_
 5. Create keys in Heroku by the following instructions:
    settings > config variables
 
+6. You may need to customize the build process for heroku, for information go to:
+   https://devcenter.heroku.com/articles/nodejs-support#customizing-the-build-process
+
 ## Using the heroku cli
 
 1. Login to heroku
