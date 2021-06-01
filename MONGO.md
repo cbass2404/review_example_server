@@ -28,10 +28,13 @@ const { Schema } = mongoose;
 
 const userSchema = new Schema({
     googleId: String,
+    credits: { type: Number, default: 0 },
 });
 
 mongoose.model("users", userSchema);
 ```
+
+_You can specify a schema by either just saying its type or by setting a series of objects with attributes set within it_
 
 _Destructure out Schema, and be sure to export the model to mongoose as shown in the bottom. The first argument for the export is the collection name, second argument is the matching schema_
 
