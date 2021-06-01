@@ -23,3 +23,16 @@ $ npm run dev
 ```
 
 _This is possible through nodemon under the package.json script configuration_
+
+## Server Routes
+
+---
+
+```
+Route               Type    Auth    Use
+-----------------------------------------------------------------------------
+/auth/google        GET     No      !args, google oauth link
+/api/current_user   GET     Yes     !args, checks cookie in browser
+/api/logout         GET     Yes     !args, deletes cookie in browser
+/api/stripe         POST    YES     Token, adds survey credits on successful payments
+```
