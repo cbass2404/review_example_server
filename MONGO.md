@@ -49,3 +49,5 @@ app.get(
     }
 );
 ```
+
+5. The max size of a single document in MongoDB is 4mb, be careful about using subdocuments(subclasses) inside classes. Often relational keys are better than direct association.
