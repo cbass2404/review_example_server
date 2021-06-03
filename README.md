@@ -92,5 +92,6 @@ Route                 Type    Auth    Use
 
 /api/surveys/webhooks POST    YES     Feedback
 
-/api/surveys          GET     YES     !args, returns list of surveys belonging to current_user
+/api/surveys          GET     YES     !args, returns list of surveys
+                                      belonging to current_user
 ```
