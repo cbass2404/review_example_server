@@ -118,3 +118,28 @@ module.exports = (app) => {
     });
 };
 ```
+
+## Testing
+
+---
+
+1. In your client side index.js file add the following to test with oauth flow:
+
+```javascript
+import axios from "axios";
+window.axios = axios;
+```
+
+2. Change to your browser window with your running app in it, go to the developers console, then type in axios. This gives you access to axios in the console to test routes.
+
+3. In console create a object to be sent then send it to your api route:
+
+```javascript
+const survey = {
+    title: "my title",
+    subject: "Give Us Feedback!",
+    recipients: "cory.bass.07@gmail.com",
+    body: "We would love to hear if you enjoyed our services!",
+};
+axios.post("/route/goes/here", survey);
+```
