@@ -26,7 +26,7 @@ const FIELDS = [
     },
 ];
 
-const SurveyForm = ({ handleSubmit }) => {
+const SurveyForm = ({ handleSubmit, setShowFormReview }) => {
     const renderFields = () =>
         FIELDS.map(({ label, name }) => {
             return (
@@ -39,9 +39,10 @@ const SurveyForm = ({ handleSubmit }) => {
                 />
             );
         });
+
     return (
         <div>
-            <form onSubmit={handleSubmit((values) => console.log(values))}>
+            <form onSubmit={handleSubmit(setShowFormReview)}>
                 {renderFields()}
 
                 <Link to="/surveys" className="red btn-flat white-text">
