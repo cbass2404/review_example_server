@@ -1,8 +1,10 @@
-const SurveyField = ({ input }) => {
-    console.log(input);
+const SurveyField = ({ input, label }) => {
     return (
         <div>
-            <input {...input} />
+            <label>
+                {label}
+                <input {...input} />
+            </label>
         </div>
     );
 };
