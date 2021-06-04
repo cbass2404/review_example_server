@@ -26,8 +26,58 @@ const helper = sendgrid.mail;
 3. Create a class and set it to extend out the helper.Mail class in sendgrid library:
 
 ```javascript
-class Mailer extends helper.Mail {}
+class Mailer extends helper.Mail {
+    constructor({ subject, recipients }, content) {
+        super();
+
+        this.sgApi = sendgrid("apikeydlkjafdk234");
+        this.from_email = new helper.Email("test@email.com");
+        this.subject = subject;
+        this.body = new helper.Content("text/html", content);
+        this.recipients = this.formatAddresses(recipients);
+
+        this.addContent(this.body);
+        this.addClickTracking();
+        this.addRecipients();
+    }
+
+    formatAddresses(recipients) {
+        return recipients.map(({ email }) => {
+            return new helper.Email(email);
+        });
+    }
+
+    addClickTracking() {
+        const trackingSettings = new helper.TrackingSettings();
+        const clickTracking = new helper.ClickTracking(true, true);
+
+        trackingSettings.setClickTracking(clickTracking);
+        this.addTrackingSettings(trackingSettings);
+    }
+
+    addRecipients() {
+        const personalize = new helper.Personalization();
+        this.recipients.forEach((recipient) => {
+            personalize.addTo(recipient);
+        });
+        this.addPersonalization(personalize);
+    }
+
+    async send() {
+        const request = this.sgApi.emptyRequest({
+            method: "POST",
+            path: "/v3/mail/send",
+            body: this.toJSON(),
+        });
+
+        const response = this.sgApi.API(request);
+        return response;
+    }
+}
 ```
+
+_Be sure to format all email addresses before sending it to the mail class_
+_Unfortunately there isn't a large explanation on the sendgrid documentation on how this code works or why it is the way it is. You just have to do it._
 
 4. Create a template for your email body:
 
@@ -42,20 +92,3 @@ module.exports = (survey) => {
 ```javascript
 const mailer = new Mailer(survey, surveyTemplate(survey));
 ```
-
-<!-- Integrate in a sendgrid function:
-
-```javascript
-// using Twilio SendGrid's v3 Node.js Library
-// https://github.com/sendgrid/sendgrid-nodejs
-const sgMail = require("@sendgrid/mail");
-sgMail.setApiKey("apikey");
-const msg = {
-    to: "test@email.com",
-    from: "test@email.com",
-    subject: "Sending with Twilio SendGrid is Fun",
-    text: "and easy to do anywhere, even with Node.js",
-    html: "<strong>and easy to do anywhere, even with Node.js</strong>",
-};
-sgMail.send(msg);
-``` -->
