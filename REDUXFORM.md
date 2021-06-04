@@ -69,3 +69,49 @@ export default reduxForm({
 ```
 
 _This is the bare minimum properties you must assign to the Field component_
+
+5. For form validation you can pass a second argument in reduxForm. A function you make that returns an object to check the values given.
+
+```javascript
+const validate = (values) => {
+    const errors = {};
+
+    errors.emails = validateEmails(values.emails || "");
+
+    FIELDS.forEach(({ name, errorMessage }) => {
+        if (!values[name]) {
+            errors[name] = errorMessage;
+        }
+    });
+
+    return errors;
+};
+
+export default reduxForm({
+    validate,
+    form: "surveyForm",
+})(SurveyForm);
+```
+
+_redux form checks the returned object. if it is empty it passes, if the object has values it failed validation_
+
+6. To validate further create functions to return an object if there are errors:
+
+```javascript
+const re =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default (emails) => {
+    const invalidEmails = emails
+        .split(",")
+        .map((email) => email.trim())
+        .filter((email) => email && !re.test(email));
+
+    if (invalidEmails.length) {
+        return `Invalid email(s): ${invalidEmails}`;
+    }
+
+    return;
+};
+```

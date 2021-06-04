@@ -17,8 +17,8 @@ const App = ({ fetchUser }) => {
     }, [fetchUser]);
 
     return (
-        <div className="container">
-            <Router>
+        <Router>
+            <div className="container">
                 <Header />
                 <Switch>
                     <Route exact path="/" component={Landing} />
@@ -26,8 +26,8 @@ const App = ({ fetchUser }) => {
                     <Route path="/surveys/new" component={SurveyNew} />
                     <Route component={NoMatch} />
                 </Switch>
-            </Router>
-        </div>
+            </div>
+        </Router>
     );
 };
 
