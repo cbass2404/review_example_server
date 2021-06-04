@@ -6,9 +6,9 @@ import * as actions from "../actions";
 // local files
 import Header from "./Header";
 import Landing from "./Landing";
+import Dashboard from "./Dashboard";
+import SurveyNew from "./surveys/SurveyNew";
 // temp components
-const Dashboard = () => <h2>Dashboard</h2>;
-const SurveyNew = () => <h2>SurveyNew</h2>;
 const NoMatch = () => <h2>Page not Found</h2>;
 
 const App = ({ fetchUser }) => {
