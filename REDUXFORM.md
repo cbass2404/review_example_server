@@ -28,3 +28,44 @@ export default combineReducers({
     form: reduxForm,
 });
 ```
+
+3. Connect your form to reduxform like the example:
+
+```javascript
+import { reduxForm } from "redux-form";
+
+const SurveyForm = () => {
+    return <div>SurveyForm</div>;
+};
+
+export default reduxForm({
+    form: "surveyForm",
+})(SurveyForm);
+```
+
+_reduxForm only takes one argument, which is the form name_
+
+4. Set up text fields for reduxForm:
+
+```javascript
+import { reduxForm, Field } from "redux-form";
+
+const SurveyForm = ({ handleSubmit }) => {
+    return (
+        <div>
+            <form onSubmit={handleSubmit((values) => console.log(values))}>
+                <Field type="text" name="surveyTitle" component="input" />
+                <button className="btn" type="submit">
+                    Submit
+                </button>
+            </form>
+        </div>
+    );
+};
+
+export default reduxForm({
+    form: "surveyForm",
+})(SurveyForm);
+```
+
+_This is the bare minimum properties you must assign to the Field component_
