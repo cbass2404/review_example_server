@@ -67,11 +67,11 @@ _This is possible through nodemon under the package.json script configuration_
 ```
 Route                 Type    Auth    Use
 -----------------------------------------------------------------------------
-/auth/google          GET     No      !args, google oauth link
+/auth/google          GET     NO      !args, google oauth link
 
-/api/current_user     GET     Yes     !args, checks cookie in browser
+/api/current_user     GET     YES     !args, checks cookie in browser
 
-/api/logout           GET     Yes     !args, deletes cookie in browser
+/api/logout           GET     YES     !args, deletes cookie in browser
 
 /api/stripe           POST    YES     Token, adds survey credits on
                                       successful payments
@@ -94,4 +94,7 @@ Route                 Type    Auth    Use
 
 /api/surveys          GET     YES     !args, returns list of surveys
                                       belonging to current_user
+
+/api/surveys/thanks   GET     NO      !args, returns a survey participant
+                                      to a thankyou landing page
 ```
