@@ -125,3 +125,11 @@ export default reduxForm({
     destroyOnUnmount: false,
 })(SurveyForm);
 ```
+
+8. To make persistent data clear add the following to the lowest common parent:
+
+```
+export default reduxForm({ form: "surveyForm" })(SurveyNew);
+```
+
+_the default value for reduxForm is to dump data on dismount, this tricks it into dumping it when the parent unmounts_

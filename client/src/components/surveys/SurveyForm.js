@@ -43,7 +43,7 @@ const SurveyForm = ({ handleSubmit, setShowFormReview }) => {
 const validate = (values) => {
     const errors = {};
 
-    errors.emails = validateEmails(values.emails || "");
+    errors.recipients = validateEmails(values.recipients || "");
 
     formFields.forEach(({ name, errorMessage }) => {
         if (!values[name]) {

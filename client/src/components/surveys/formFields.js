@@ -17,7 +17,7 @@ export default [
     },
     {
         label: "Recipient List",
-        name: "emails",
+        name: "recipients",
         errorMessage: "You must provide emails seperated by commas",
     },
 ];
