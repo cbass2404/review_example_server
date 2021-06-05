@@ -115,3 +115,13 @@ export default (emails) => {
     return;
 };
 ```
+
+7. To persist data from one page to another add the following destroyonunmount: false to reduxForm:
+
+```javascript
+export default reduxForm({
+    validate,
+    form: "surveyForm",
+    destroyOnUnmount: false,
+})(SurveyForm);
+```

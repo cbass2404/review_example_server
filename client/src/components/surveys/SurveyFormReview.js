@@ -1,3 +1,5 @@
+import { connect } from "react-redux";
+
 const SurveyFormReview = ({ setShowFormReview }) => {
     return (
         <div>
@@ -12,4 +14,8 @@ const SurveyFormReview = ({ setShowFormReview }) => {
     );
 };
 
-export default SurveyFormReview;
+const mapStateToProps = (state) => ({
+    formValues: state.form.surveyForm.values,
+});
+
+export default connect(mapStateToProps)(SurveyFormReview);
