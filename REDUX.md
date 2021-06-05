@@ -103,3 +103,44 @@ export default connect(null, actions)(App);
 ```
 
 _the connect function takes two args, mapstatetoprops function and action creators_
+
+## Redux Redirects
+
+---
+
+1. Import withRouter from react-router-dom:
+
+```javascript
+import { withRouter } from "react-router-dom";
+```
+
+2. Wrap the exported component with redux in the withRouter function:
+
+```javascript
+export default connect(mapStateToProps, actions)(withRouter(SurveyFormReview));
+```
+
+_This gives history to the hook_
+
+3. This gives a history prop to the component it was imported into, pass it along to the action creator:
+
+```javascript
+<button
+    onClick={() => submitSurvey(formValues, history)} // history is the destructured argument from props being sent along to the submitSurvey redux action
+    className="green btn-flat right white-text"
+>
+    Send Survey
+    <i className="material-icons right">email</i>
+</button>
+```
+
+4. Add the history argument into the action creator in the redux files:
+
+```javascript
+export const submitSurvey = (values, history) => async (dispatch) => {
+    const res = await axios.post("/api/surveys", values);
+
+    history.push("/surveys");
+    dispatch({ type: "FETCH_USER", payload: res.data });
+};
+```

@@ -128,7 +128,7 @@ export default reduxForm({
 
 8. To make persistent data clear add the following to the lowest common parent:
 
-```
+```javascript
 export default reduxForm({ form: "surveyForm" })(SurveyNew);
 ```
 
