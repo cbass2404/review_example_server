@@ -2,33 +2,11 @@ import { Link } from "react-router-dom";
 import { reduxForm, Field } from "redux-form";
 import SurveyField from "./SurveyField";
 import validateEmails from "../../utls/validateEmails";
-
-const FIELDS = [
-    {
-        label: "Survey Title",
-        name: "title",
-        errorMessage: "You must provide a title",
-    },
-    {
-        label: "Subject Line",
-        name: "subject",
-        errorMessage: "You must provide a subject",
-    },
-    {
-        label: "Email Body",
-        name: "body",
-        errorMessage: "You must provide a body",
-    },
-    {
-        label: "Recipient List",
-        name: "emails",
-        errorMessage: "You must provide emails seperated by commas",
-    },
-];
+import formFields from "./formFields";
 
 const SurveyForm = ({ handleSubmit, setShowFormReview }) => {
     const renderFields = () =>
-        FIELDS.map(({ label, name }) => {
+        formFields.map(({ label, name }) => {
             return (
                 <Field
                     key={name}
@@ -67,7 +45,7 @@ const validate = (values) => {
 
     errors.emails = validateEmails(values.emails || "");
 
-    FIELDS.forEach(({ name, errorMessage }) => {
+    formFields.forEach(({ name, errorMessage }) => {
         if (!values[name]) {
             errors[name] = errorMessage;
         }
