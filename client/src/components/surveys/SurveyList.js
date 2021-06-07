@@ -11,20 +11,20 @@ const SurveyList = ({ surveys, fetchSurveys }) => {
     }, [fetchSurveys]);
 
     const renderSurveys = () =>
-        surveys.map((survey) => {
+        surveys.reverse().map((survey) => {
             return (
-                <div className="card darken-1" key={survey._id}>
-                    <div className="card-content">
+                <div className="card blue-grey" key={survey._id}>
+                    <div className="card-content white-text">
                         <span className="card-title">{survey.title}</span>
                         <p>{survey.body}</p>
                         <p className="right">
                             Sent on:{" "}
                             {new Date(survey.dateSent).toLocaleDateString()}
                         </p>
-                        <div className="card-action">
-                            <a>Yes: {survey.yes}</a>
-                            <a>No: {survey.no}</a>
-                        </div>
+                    </div>
+                    <div className="card-action">
+                        <a>Yes: {survey.yes}</a>
+                        <a>No: {survey.no}</a>
                     </div>
                 </div>
             );
