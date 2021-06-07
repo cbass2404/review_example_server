@@ -1,5 +1,7 @@
 ## Setup for Mongoose
 
+[Mongoose](https://mongoosejs.com)
+
 ---
 
 1. In index file, require mongoose:
