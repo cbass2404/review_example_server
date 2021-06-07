@@ -51,3 +51,42 @@ app.get(
 ```
 
 5. The max size of a single document in MongoDB is 4mb, be careful about using subdocuments(subclasses) inside classes. Often relational keys are better than direct association.
+
+## Queries
+
+---
+
+```javascript
+Survey.updateOne(
+    {
+        _id: surveyId,
+        recipients: {
+            $elemMatch: { email: email, responded: false },
+        },
+    },
+    {
+        $inc: { [choice]: 1 },
+        $set: { "recipients.$.responded": true },
+    }
+);
+```
+
+_updateOne({object to match}, {$inc(increment): {[choice(variable set by javascript)]: 1(increment by 1)}, $set(sets value on object): {"recipients.$(the object matched).responded": true(sets it to true)}})_
+
+_mongo always sets ids as \_id_
+
+Creating Queries:
+
+1. open command terminal:
+
+```
+$ node
+```
+
+2. import main index.js imports:
+
+```
+Survey.find({}).then(console.log)
+```
+
+_test queries quickly in the terminal_
